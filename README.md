@@ -29,13 +29,12 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
    npm  install vue-touch@next --save
 ```  
 ### 在main.js中配置文件
-引入axios方法
+#### 引入axios方法
 ``` 
    import axios from axios 
    Vue.prototype.$http = axios
 ```
-引入组件状态管理vuex,一般情况下，项目中会创建一个store的文件夹 
-该项目是在src中创建了一个store文件夹，并创建了index.js的文件
+#### 引入组件状态管理vuex,一般情况下，项目中会创建一个store的文件夹 ，该项目是在src中创建了一个store文件夹，并创建了index.js的文件
 ```// 管理组件状态
 import Vue from 'vue'
 import Vuex from 'vuex'

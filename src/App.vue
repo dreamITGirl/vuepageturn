@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <i class="icon"></i>
+    <audio src=""></audio>
     <router-view></router-view>
   </div>
 </template>
@@ -11,12 +13,16 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+body,html{
+  width:100%;
+  height:100%;
+  overflow: hidden;
+  font-family: "微软雅黑"
 }
+</style>
+<style lang="scss" scoped>
+  .icon{
+    display:inline-block;
+    
+  }
 </style>
