@@ -52,5 +52,8 @@ export default store
 ```
 
 
+####引入了viewport.js,适配移动端，同时，不受手机字体大小设置的影响，引入初始化的reset.css
+
+
 
 
