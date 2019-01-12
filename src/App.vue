@@ -17,10 +17,14 @@ body,html{
   width:100%;
   height:100%;
   overflow: hidden;
-  font-family: "微软雅黑";
+  font-family: "微软雅黑" ;
   font-size:12px;
-  background: url(../static/images/bg_1.png) no-repeat;
-  background-size: cover;
+}
+.container{
+    width:100%;
+    height:100%;
+    overflow: hidden;
+    position:absolute;
 }
 </style>
 <style lang="scss" scoped>
@@ -30,8 +34,11 @@ body,html{
     height:20px;
     background: url(../static/images/music.png) no-repeat;
     background-size: 100%;
-    float:right;
     margin:10px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 100;
 
   }
 </style>
