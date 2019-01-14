@@ -8,7 +8,6 @@
                         :key="index" :is="val" 
                         :style="{
                             zIndex:zIndex(index),
-                            top:top(index),
                             transition:`all ${transition(index)}s`,
                             transform:`translateY(${top(index)}) scale3d(${scale(index)},1,${scale(index)})`
                         }"
@@ -19,7 +18,6 @@
     </div>
 </template>
 <script>
-// :ref="`touch${[index]}`"
 var componentList = {
      componentOne:require('@/components/componentOne.vue').default,
      componentTwo: require("@/components/componentTwo.vue").default,
@@ -103,7 +101,7 @@ export default {
     methods:{
         panStart(e){
             e.preventDefault();
-
+            console.log(e,'start');
             if (!this.canmove) {
                 return false
             } 
@@ -129,6 +127,7 @@ export default {
                 return false
             }else{
                 this.distance = e.center.y-this.touchStart;
+                console.log(this.distance);
                 //第一页不能下滑翻页，最后一页不能上滑翻页
                 if (!((this.index == 0 && this.distance>0) || ((this.index == this.componentList.length-1) && this.distance<0)) ) {
                    
