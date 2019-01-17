@@ -1,10 +1,10 @@
 <template>
     <div class="container">
-        <img src="../../static/images/picture_one.jpg" class="img animated fadeIn slower">
+        <img src="../../static/images/picture_one.jpg" class="img " :class="{animated:addAnimation, fadeIn:addAnimation, slower :addAnimation}">
         <div class="">
-            <p class="animated fadeIn slower delay-1s">时光静好，与君语</p>
-            <p class="animated fadeIn slower delay-2s">细水流年，与君同</p>
-            <p class="animated fadeIn slower delay-3s">繁华落尽，与君老</p>
+            <p class="delay-1s" :class="{animated:addAnimation, fadeIn:addAnimation, slower :addAnimation}">时光静好，与君语</p>
+            <p class="delay-2s" :class="{animated:addAnimation, fadeIn:addAnimation, slower :addAnimation}">细水流年，与君同</p>
+            <p class="delay-3s" :class="{animated:addAnimation, fadeIn:addAnimation, slower :addAnimation}">繁华落尽，与君老</p>
         </div>
     </div>
 </template>
@@ -14,6 +14,15 @@ export default {
     data(){
         return {
             
+        }
+    },
+    computed:{
+        addAnimation(){
+            if (this.$store.state.hasAnimated.name=='touch0' && this.$store.state.hasAnimated.hasAnimats) {
+               return true  
+            }else{
+                return false
+            }
         }
     }
 }

@@ -5,9 +5,17 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
-    state:{},
+    state:{
+        hasAnimated:{
+            hasAnimats:true,
+            name:""
+        }
+    },
     mutations:{
-
+        showAnimation(state,n){
+            state.hasAnimated.hasAnimats = n.hasAnimats;
+            state.hasAnimated.name = n.name
+        }
     }
 })
 

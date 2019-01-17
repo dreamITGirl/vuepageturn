@@ -11,7 +11,7 @@
                             transition:`all ${transition(index)}s`,
                             transform:`translateY(${top(index)}) scale3d(${scale(index)},1,${scale(index)})`
                         }"
-                        
+                       :ref="`touch${index}`"
             ></component>  
               
         </v-touch>
@@ -101,7 +101,6 @@ export default {
     methods:{
         panStart(e){
             e.preventDefault();
-            console.log(e,'start');
             if (!this.canmove) {
                 return false
             } 
@@ -120,6 +119,7 @@ export default {
                 others:1
             }
             this.touchStart = e.center.y;
+            
         },
         panMove(e){
             e.preventDefault();
@@ -130,7 +130,6 @@ export default {
                 console.log(this.distance);
                 //第一页不能下滑翻页，最后一页不能上滑翻页
                 if (!((this.index == 0 && this.distance>0) || ((this.index == this.componentList.length-1) && this.distance<0)) ) {
-                   
                     this.nowTop = {
                             before:-windowHeight + this.distance,
                             current:this.distance/3,
@@ -185,6 +184,13 @@ export default {
                         this.index--;
                         this.canmove = true;   
                     },600)
+                    $(this.$refs[`touch${this.index}`][0].$el).addClass('animated').siblings().removeClass('animated');
+                    var obj = {
+                        hasAnimats:true,
+                        name:`touch${this.index-1}`
+                    }
+                    this.$store.commit('showAnimation',obj)
+                    
                 } else if(this.distance>0 && this.distance < windowHeight/10){//不可以下滑
                     this.distance = 0;
                     this.canmove = false;
@@ -241,6 +247,12 @@ export default {
                             this.index++;
                             this.canmove = true;
                         },600)
+                       $(this.$refs[`touch${this.index}`][0].$el).addClass('animated').siblings().removeClass('animated');
+                        var obj = {
+                            hasAnimats:true,
+                            name:`touch${this.index+1}`
+                        }
+                        this.$store.commit('showAnimation',obj)
                 }else if(this.distance<0 && this.distance*(-1) < windowHeight /10){//不可以上滑
                         this.distance = 0;
                         this.nowTop = {
