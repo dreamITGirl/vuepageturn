@@ -29,8 +29,8 @@ export default {
 </script>
 <style lang="scss" scoped>
     .container{
-        background:url(/static/images/bg_1.png) no-repeat;
-        background-size:100%;
+        background:url(/static/images/bg_1.jpg) no-repeat;
+        background-size:cover;
         .img{
             width:5.2rem;
             margin:.6rem .2rem;

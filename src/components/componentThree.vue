@@ -23,7 +23,7 @@ export default {
 </script>
 <style lang="scss" scoped>
     .container{
-        background: url(/static/images/bg_3.png) no-repeat;
+        background: url(/static/images/bg_1.jpg) no-repeat;
         background-size: cover;
         .img{
             width:7rem;

@@ -24,8 +24,8 @@
 </script>
 <style lang="scss" scoped>
     .container{
-        background: url(/static/images/bg_2.png) no-repeat;
-        background-size: cover;
+        // background: url(/static/images/bg_2.jpg) no-repeat;
+        // background-size: cover;
         .img{
             width: 5.7rem;
         }

@@ -22,13 +22,14 @@ var componentList = {
      componentOne:require('@/components/componentOne.vue').default,
      componentTwo: require("@/components/componentTwo.vue").default,
      componentThree:require("@/components/componentThree.vue").default,
+     componentFour:require('@/components/componentFour.vue').default
 }
 var windowHeight = window.innerHeight;
 export default {
     name:'total',
     data(){
         return {
-            componentList:['componentOne','componentTwo','componentThree'],
+            componentList:['componentOne','componentTwo','componentThree','componentFour'],
             index:0,
             distance:0,//手指在页面滑动的距离
             nowZIndex:{
@@ -127,7 +128,6 @@ export default {
                 return false
             }else{
                 this.distance = e.center.y-this.touchStart;
-                console.log(this.distance);
                 //第一页不能下滑翻页，最后一页不能上滑翻页
                 if (!((this.index == 0 && this.distance>0) || ((this.index == this.componentList.length-1) && this.distance<0)) ) {
                     this.nowTop = {
