@@ -18,7 +18,7 @@ export default {
     },
     computed:{
         addAnimation(){
-            if (this.$store.state.hasAnimated.name=='touch0' && this.$route.query.finished) {
+            if (this.$store.state.hasAnimated.name=='touch0' && (this.$route.query.finished || this.$store.state.hasAnimated.hasAnimats) ) {
                 this.$store.commit('showAnimation',{
                     hasAnimats:true,
                     name:'touch0'
