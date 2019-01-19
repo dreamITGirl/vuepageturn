@@ -18,7 +18,11 @@ export default {
     },
     computed:{
         addAnimation(){
-            if (this.$store.state.hasAnimated.name=='touch0' && this.$store.state.hasAnimated.hasAnimats) {
+            if (this.$store.state.hasAnimated.name=='touch0' && this.$route.query.finished) {
+                this.$store.commit('showAnimation',{
+                    hasAnimats:true,
+                    name:'touch0'
+                })
                return true  
             }else{
                 return false
@@ -29,11 +33,12 @@ export default {
 </script>
 <style lang="scss" scoped>
     .container{
-        background:url(/static/images/bg_1.jpg) no-repeat;
+        background:url(/static/images/bg_1.png) no-repeat;
         background-size:cover;
+        text-align: center;
         .img{
             width:5.2rem;
-            margin:.6rem .2rem;
+            margin:.6rem auto;
         }
         p{
             font-size:.32rem;

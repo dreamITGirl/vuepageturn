@@ -23,10 +23,12 @@ export default {
 </script>
 <style lang="scss" scoped>
     .container{
-        background: url(/static/images/bg_1.jpg) no-repeat;
+        background: url(/static/images/bg_1.png) no-repeat;
         background-size: cover;
+        text-align: center;
         .img{
             width:7rem;
+            margin:.6rem 0;
         }
         p{
             font-size: .32rem;

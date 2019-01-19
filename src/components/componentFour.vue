@@ -1,14 +1,17 @@
 <template>
     <div class="container">
-        <ul class="list">
-            <li class="item" v-for="(item,index) in newList" :key="index">
-                 <img :src= item.url  class="scale-img">  
-                 <div class="right">
-                     <p class="title">{{item.title}}</p>
-                     <p class="desc">{{item.desc}}</p>
-                 </div> 
-            </li>
-        </ul>
+        <div class="main">
+            <ul class="list">
+                <li class="item" v-for="(item,index) in newList" :key="index">
+                    <img :src= item.url  class="scale-img">  
+                    <div class="right">
+                        <p class="title">{{item.title}}</p>
+                        <p class="desc">{{item.desc}}</p>
+                    </div> 
+                </li>
+            </ul>
+        </div>
+        
     </div>
 </template>
 <script>
@@ -33,20 +36,87 @@ export default {
                     title:'生于忧患，死于安乐2',
                     desc:'故天将降大任于斯人也，必先苦其心志，劳其筋骨，饿其体肤，空乏其身，行拂乱其所为，所以动心忍性，曾益其所不能。2'
                 },
+                {
+                    url:'/static/images/picture3.jpg',
+                    title:'生于忧患，死于安乐3',
+                    desc:'故天将降大任于斯人也，必先苦其心志，劳其筋骨，饿其体肤，空乏其身，行拂乱其所为，所以动心忍性，曾益其所不能。3'
+                },
+                {
+                    url:'/static/images/picture3.jpg',
+                    title:'生于忧患，死于安乐4',
+                    desc:'故天将降大任于斯人也，必先苦其心志，劳其筋骨，饿其体肤，空乏其身，行拂乱其所为，所以动心忍性，曾益其所不能。4'
+                },
             ]
         }
+    },
+    methods:{
+
+    },
+    mounted(){
+        var list = document.getElementsByClassName('list')[0];
+        $('.list').animate({"scrollTop":".2rem"},100);
+        var timer = null;
+        var canScroll  = false;
+        var currentTop = $('.main').position().top;
+        $('.list').scroll(function(){
+            clearTimeout(timer);
+            timer = null; 
+            timer = setTimeout(function(){
+                var scrollTop =  $('.list').position().top;
+                var timerTop = null,timerBottom = null;
+               
+                if (list.scrollTop === 0 && canScroll == false && currentTop == scrollTop) {
+                    clearTimeout(timer)
+                    timer = null;
+                    canScroll =true;
+                    timerTop = setTimeout(function(){
+                        $("#markList").animate({"scrollTop":5},100);
+                        canScroll =false;
+                        clearTimeout(timerTop)
+                        timerTop = null;
+                        clearTimeout(timer)
+                        timer = null;
+                    },100);	
+                } else if((list.scrollHeight - list.clientHeight) == list.scrollTop){
+                   canScroll = true;
+                   clearTimeout(timerBottom);
+                   timerBottom = null;
+                   timerBottom = setTimeout(function(){
+                       let num = $('.list').height() * 0.9;
+                       $('.list').animate({scrollTop:num},100);
+                       canScroll = false;
+                       clearTimeout(timerBottom);
+                       timerBottom = null;
+                       clearTimeout(timer)
+                       timer = null;
+                   },100)
+                }else{
+                    clearTimeout(timer);
+                    timer = null;
+                }
+            },100)
+        })
     }
 }
 </script>
 <style lang="scss" scoped>
     .container{
-        background: url(/static/images/bg_5.jpg) no-repeat;
+        background: url(/static/images/bg_5.png) no-repeat;
         background-size:cover;
         color:#fff;
+        padding:.8rem 0;
+        .main{
+            -webkit-overflow-scrolling:touch;
+             overflow: auto;
+           
+        }
+        .main:after{
+            content:"";
+            height:calc(3rem+1px);
+        }
         .list{
-            margin:.8rem 0;
             box-sizing: border-box;
-            height:3rem;
+            height:calc(3rem + 1px);
             overflow: auto;
         }
         .item{

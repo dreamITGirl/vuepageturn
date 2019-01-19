@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <i class="icon "></i>
-    <audio src="../static/audio/bg.mp3" autoplay loop preload></audio>
+    <!-- <audio src="../static/audio/bg.mp3" autoplay loop preload></audio> -->
     <router-view></router-view>
   </div>
 </template>
@@ -28,6 +28,9 @@ body,html{
 }
 </style>
 <style lang="scss" scoped>
+  #app{
+    height:100%;
+  }
   .icon{
     display:inline-block;
     width:20px;
